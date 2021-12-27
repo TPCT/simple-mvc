@@ -1,0 +1,7 @@
+[2021/12/27 2:10:07 AM]{
+	Error File: /media/tpct/250263A6544743D3/php_course/mvc_scratch/controllers/AuthController.php
+	Line Number: 29
+	Error String: {
+	    Undefined property: core\Application::$redirection
+	}
+}
