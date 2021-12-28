@@ -5,3 +5,87 @@
 	    Undefined property: core\Application::$redirection
 	}
 }
+[2021/12/28 6:30:07 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 34
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}
+[2021/12/28 6:30:27 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 34
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}
+[2021/12/28 6:30:27 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 34
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}
+[2021/12/28 6:30:27 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 34
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}
+[2021/12/28 6:30:28 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 34
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}
+[2021/12/28 6:30:40 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 34
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}
+[2021/12/28 6:30:41 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 34
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}
+[2021/12/28 6:42:48 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 34
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}
+[2021/12/28 6:43:39 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 35
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}
+[2021/12/28 6:43:44 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 35
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}
+[2021/12/28 6:43:44 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 35
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}
+[2021/12/28 6:44:14 AM]{
+	Error File: /media/tpct/250263A6544743D3/fproject/core/Session.php
+	Line Number: 35
+	Error String: {
+	    Undefined variable $flash_message
+	}
+}

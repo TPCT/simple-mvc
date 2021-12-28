@@ -4,18 +4,26 @@ namespace core;
 use PDO;
 
 class Database{
-    private PDO $connection;
+    private ?PDO $connection;
 
-    public function __construct($config){
-        $dsn = $config['dsn'] ?? '';
-        $db_user = $config['db_user'] ?? '';
-        $db_pass = $config['db_pass'] ?? '';
-        $this->connection = new PDO($dsn, $db_user, $db_pass,[
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_EMULATE_PREPARES => false,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-        ]);
-        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    public function __construct(){
+        $this->connection = Null;
+        if (isset($_ENV['DB_DRIVER'], $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASS'])){
+            $config = [
+                'dsn' => "{$_ENV['DB_DRIVER']}:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}",
+                'db_user' => $_ENV['DB_USER'] ?? '',
+                'db_pass' => $_ENV['DB_PASS'] ?? ''
+            ];
+            $dsn = $config['dsn'] ?? '';
+            $db_user = $config['db_user'] ?? '';
+            $db_pass = $config['db_pass'] ?? '';
+            $this->connection = new PDO($dsn, $db_user, $db_pass,[
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            ]);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
     }
 
     public function connector(){

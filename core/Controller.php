@@ -14,6 +14,6 @@ abstract class Controller{
     }
 
     public function render($view, $params){
-        return Application::APP()->router->renderView($view, $params);
+        return (new View($view, $params))->render();
     }
 }

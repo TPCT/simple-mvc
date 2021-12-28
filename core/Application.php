@@ -11,7 +11,8 @@ class Application
     private static string $views_dir;
     private static Application $app;
     private static ?Controller $controller = null;
-    
+    private static DotEnv $dotEnv;
+
     public View $view;
     public Request $request;
     public Router $router;
@@ -37,20 +38,27 @@ class Application
         return self::$views_dir;
     }
 
-    public function __construct(string $root_dir, array $config, string $views_dir = "views")
+    public function __construct(string $root_dir, array $config = [], string $views_dir = "views")
     {
         $this->auto_loader();
         self::$app = $this;
         self::$root_dir = $root_dir;
         self::$views_dir = rtrim($root_dir, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . ltrim($views_dir, \DIRECTORY_SEPARATOR);
+        $this->Env('.env');
 
-        $this->view = new View();
         $this->session = new Session();
         $this->response = new Response();
         $this->router = new Router();
         $this->request = new Request();
         $this->error_logger = new ErrorLogger(self::ROOT_DIR() . \DIRECTORY_SEPARATOR . "errors");
-        $this->database = new Database($config['db'] ?? Null);
+        $this->database = new Database();
+    }
+
+    public static function Env($file){
+        if (file_exists(__DIR__ . \DIRECTORY_SEPARATOR .  $file)){
+            self::$dotEnv = new DotEnv($file);
+            self::$dotEnv->load();
+        }
     }
 
     protected function auto_loader()
@@ -74,6 +82,7 @@ class Application
 
     public function setController(Controller $controller): Controller{
         self::$controller = $controller;
+        self::$Layout = self::$controller->layout();
         return self::$controller;
     }
 

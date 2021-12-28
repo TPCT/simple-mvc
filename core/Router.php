@@ -26,7 +26,7 @@ class Router{
 
         if ($callback === Null){
             $this->response->setStatusCode(404);
-            return Application::APP()->view->renderView("_404");
+            return (new View("_404"))->render();
         }
 
         if (is_array($callback)){
@@ -45,7 +45,7 @@ class Router{
         }
 
         if (\is_string($callback)){
-            return Application::APP()->view->renderView($callback);
+            return $callback;
         }
         
     }

@@ -1,11 +1,22 @@
 <?php 
 namespace core;
 
-class View{
-    private string $title = '';
+use core\Exceptions\RequiredFileNotFound;
 
-    public function renderView(string $view, $params = []){
-        $viewContent = $this->renderViewContent($view, $params);
+class View{
+    private string $view = '';
+    private array $params = [];
+
+    public function __construct(string $view, array $params = []){
+        $viewFullPath = Application::VIEWS_DIR() . \DIRECTORY_SEPARATOR . $view . ".php";
+        if (!file_exists($view))
+            throw new RequiredFileNotFound($viewFullPath);
+        $this->view = $view;
+        $this->params = $params;
+    }
+
+    public function render(){
+        $viewContent = $this->renderViewContent($this->view, $this->params);
         $layoutContent = $this->renderLayoutContent();
         if ($layoutContent !== Null){
            return \str_replace('{{content}}', $viewContent, $layoutContent);
@@ -13,7 +24,7 @@ class View{
         return $viewContent;
     }
 
-    public function renderLayoutContent(){
+    private function renderLayoutContent(){
         $layout = Application::APP()->layout();
         if (Application::APP()->getController()){
             $layout = Application::APP()->getController()->layout();
@@ -26,7 +37,7 @@ class View{
         return Null;
     }
 
-    public function renderViewContent(string $view, $params = []){
+    private function renderViewContent(string $view, $params = []){
         \ob_start();
         \extract($params);
         include_once(Application::VIEWS_DIR() . \DIRECTORY_SEPARATOR . "{$view}.php");
